@@ -48,24 +48,24 @@ export default function OpenBoard() {
     [stageArray]
   );
   return (
-    <div style={{ backgroundColor: color + "15" }} className="min-h-dvh">
+    <div style={{ backgroundColor: color + "15" }} className="min-h-dvh ">
       <BoardHeader name={name} />
-      <div className="boardContent p-1 m-1 ">
-        <div className="stages flex flex-wrap gap-2  ">
+      <div className="boardContent p-1 m-1">
+        <div className="stages flex max-md:justify-center flex-wrap gap-2">
           {stageArray.map((details, index) => (
             <StageBox key={index} details={details} color={color} />
           ))}
           <div
             onClick={() => dispatch(stageToggle())}
             style={{ borderColor: color }}
-            className="w-5 h-[87dvh] border-2 flex items-center justify-center cursor-pointer bg-white"
+            className="w-5 h-[65dvh] md:h-[87dvh] border-2 flex items-center justify-center cursor-pointer bg-white"
           >
             +
           </div>
           {stageIsFormOpen && (
             <div
               onClick={() => dispatch(stageToggle())}
-              className="w-screen h-screen bg-[#00000050] fixed top-0 flex justify-center items-center"
+              className="w-screen h-screen bg-[#00000050] fixed top-0 left-0 flex justify-center items-center z-10"
             >
               <StageForm myBoardId={myBoardId} />
             </div>
@@ -87,7 +87,7 @@ function BoardHeader({ name }) {
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <div className="font-semibold text-2xl text-center">{name}</div>
-      <span>{`(Click on vertical (+) bar to add stages for your board)`}</span>
+      <span>{`(Click on vertical (+) bar to add stages)`}</span>
     </div>
   );
 }
@@ -126,7 +126,7 @@ function StageBox({ details, color }) {
     <div
       id={id}
       style={{ borderColor: color }}
-      className="stage border-2  w-[300px] h-[87dvh] bg-white"
+      className="stage border-2  w-[300px] h-[65dvh] md:h-[87dvh] bg-white"
       onDragOver={ e => e.preventDefault()} // by default it don't allow to drop the item, so we use preventDefault()
       onDrop={(e) => handleDrop(id)}
     //   onDragEnter={ () => console.log("onEnter", id)}
@@ -188,7 +188,7 @@ function TaskForm({ stageId }) {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className=" bg-white w-[400px] rounded px-3 py-2"
+      className=" bg-white w-[400px] rounded px-3 py-2 max-md:m-2"
     >
       <form
         onSubmit={(e) => {
@@ -250,14 +250,14 @@ function StageForm({ myBoardId }) {
     console.log("stageArray : ", stagearray);
   }
   return (
-    <div onClick={(e) => e.stopPropagation()} className="w-[400px] bg-white">
+    <div onClick={(e) => e.stopPropagation()} className="w-[400px] bg-white m-2 rounded">
       <form
         action=""
         onSubmit={(e) => {
           e.preventDefault();
           handleStageSubmit();
         }}
-        className="flex flex-col gap-2 p-2"
+        className="flex flex-col gap-2 p-2 "
       >
         <span className="text-center font-semibold text-lg">New Stage</span>
         <input

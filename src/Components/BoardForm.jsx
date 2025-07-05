@@ -47,7 +47,7 @@ export default function BoardForm() {
           <form
             onClick={(e) => e.stopPropagation()}
             onSubmit={handleSubmit}
-            className="w-[400px] h-fit rounded-2xl shadow-[2px_2px_15px_0px_rgba(0,0,0,0.8)] p-4 flex flex-col gap-3 text-[18px] bg-white"
+            className="w-[400px] h-fit rounded-2xl shadow-[2px_2px_15px_0px_rgba(0,0,0,0.8)] p-4 flex flex-col gap-3 text-[18px] bg-white max-md:m-2"
           >
             <span className="text-center text-2xl font-semibold">
               New Board
